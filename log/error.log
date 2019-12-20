@@ -2,3 +2,31 @@
 2019-12-17T11:00:32.536Z error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?' at line 1
 2019-12-17T11:00:46.543Z error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?' at line 1
 2019-12-17T11:01:25.422Z error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?' at line 1
+2019-12-18T03:19:54.311Z error: ER_EMPTY_QUERY: Query was empty
+2019-12-18T03:21:17.051Z error: ER_EMPTY_QUERY: Query was empty
+2019-12-18T03:23:18.174Z error: ER_EMPTY_QUERY: Query was empty
+2019-12-18T03:23:58.497Z error: ER_EMPTY_QUERY: Query was empty
+2019-12-18T03:23:59.370Z error: ER_EMPTY_QUERY: Query was empty
+2019-12-18T03:25:06.759Z error: connect ETIMEDOUT
+2019-12-18T03:26:39.337Z error: ER_EMPTY_QUERY: Query was empty
+2019-12-18T03:26:40.762Z error: ER_EMPTY_QUERY: Query was empty
+2019-12-18T03:26:41.497Z error: ER_EMPTY_QUERY: Query was empty
+2019-12-18T03:29:43.498Z error: ER_EMPTY_QUERY: Query was empty
+2019-12-18T03:29:47.140Z error: ER_EMPTY_QUERY: Query was empty
+2019-12-18T03:30:40.235Z error: ER_EMPTY_QUERY: Query was empty
+2019-12-18T03:30:50.812Z error: ER_EMPTY_QUERY: Query was empty
+2019-12-18T03:31:59.304Z error: connect ETIMEDOUT
+2019-12-20T01:37:18.532Z error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?' at line 1
+2019-12-20T01:41:40.312Z error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?' at line 1
+2019-12-20T01:43:49.863Z error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?' at line 1
+2019-12-20T02:34:02.364Z error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?' at line 1
+2019-12-20T02:37:55.187Z error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?' at line 1
+2019-12-20T08:34:24.364Z error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?,?,?,?,?)' at line 1
+2019-12-20T08:38:26.197Z error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?,?,?,?)' at line 1
+2019-12-20T08:44:06.522Z error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?,?,?,?)' at line 1
+2019-12-20T08:44:40.471Z error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?,?,?,?)' at line 1
+2019-12-20T08:44:40.473Z error: insert into sys_role(id,roleCode,roleName,remark,addDate,enabled) values(uuid(),`roleCode` = '444', `roleName` = '555', `enabled` = true, `deleteFlag` = false, `remark` = '666', `sortNo` = NULL,?,?,?,?)
+2019-12-20T08:50:46.156Z error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?,?,?,?)' at line 1
+2019-12-20T08:50:46.158Z error: insert into sys_role(id,roleCode,roleName,remark,addDate,enabled) values(uuid(),`roleCode` = '4555', `roleName` = '666', `enabled` = true, `deleteFlag` = false, `remark` = '777', `sortNo` = NULL,?,?,?,?)
+2019-12-20T08:51:53.146Z error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?,?,?,?)' at line 1
+2019-12-20T08:51:53.149Z error: insert into sys_role(id,roleCode,roleName,remark,addDate,enabled) values(uuid(),`roleCode` = '4433', `roleName` = '44', `enabled` = true, `deleteFlag` = false, `remark` = '6666', `sortNo` = NULL,?,?,?,?)

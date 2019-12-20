@@ -1,5 +1,5 @@
 var user = {
-    queryById: 'select * from sys_user where user_name=?',
+    queryByUserName: 'select * from sys_user where username=?',
     login: 'select * from sys_user where user_name=?'
 };
 module.exports = user;

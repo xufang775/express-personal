@@ -16,7 +16,7 @@ router.get('/queryAll', function (req,res,next) {
 })
 
 router.get('/all', function (req,res,next) {
-    userDao.all2(req,res,next);
+    userDao.all(req,res,next);
 });
 
 module.exports = router;

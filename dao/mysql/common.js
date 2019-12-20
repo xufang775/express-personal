@@ -5,6 +5,38 @@ var pool = mysql.createPool(conf.mysql)
 var async = require('async');
 var logger = require('../../common/logger');
 
+function exec(conn,sql,params) {
+    return new Promise((resolve)=>{
+        if(params){
+            conn.query(sql, params, function (err, result) {
+                if (err) {
+                    logger.error(err);
+                    logger.error(err.sql);
+                }
+                resolve(result);
+            })
+        } else {
+            conn.query(sql,function (err, result) {
+                if (err) {
+                    logger.error(err);
+                }
+                resolve(result);
+            })
+        }
+    });
+}
+
+function conn(pool) {
+    return new Promise((resolve)=>{
+        pool.getConnection(function (err, connection) {
+            if (err) {
+                logger.error(err);
+            }
+            resolve(connection);
+        })
+    })
+}
+
 // 向前台返回JSON方法简单防封装
 function jsonWrite (res, ret) {
     if (typeof ret === 'undefined') {
@@ -17,38 +49,10 @@ function jsonWrite (res, ret) {
     }
 }
 
-function daoExec(pool,sql,params,cb) {
-    pool.getConnection(function (err, connection) {
-        if (err) {
-            logger.error(err);
-        }
-        connection.query(sql,params,function (err,result) {
-            if(err){
-                logger.error(err);
-            } else {
-                cb(result);
-            }
-            common.jsonWrite(res, result);
-            connection.release();
-        })
-    })
-}
 
-function exec(poll) {
-    return function (req,res,next) {
-        let p1 = new Promise((resolve)=>{
-            pool.getConnection(function (err, connection) {
-                if (err) {
-                    logger.error(err);
-                }
-                resolve(res,connection);
-            })
-        })
-    }
-}
 
 module.exports = {
     jsonWrite: jsonWrite,
-    daoExec: daoExec,
-    exec: exec
+    exec: exec,
+    conn: conn
 }
