@@ -8,6 +8,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var getToken = require('./routes/token');
 var sysRouter = require('./routes/system');
+var moneyRouter = require('./routes/money-manage');
 
 var app = express();
 
@@ -25,7 +26,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/api-login', getToken);
-app.use('/api-system',sysRouter);
+app.use('/api-system', sysRouter);
+app.use('/api-money', moneyRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
