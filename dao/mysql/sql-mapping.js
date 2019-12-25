@@ -29,11 +29,20 @@ function handleSelectWhere(where) {
                 whereSql = whereSql.substring(0,whereSql.length-1) + ')';
                 whereValue.push( ...where[key]);
             } else{
-                let ysf = ['=','>','<','>=','<=','is'];
+                let ysf = [' =',' >',' <',' >=',' <=',' is'];
                 ysf.forEach(fh=>{
-                    if(key.indexOf(fh)>=0){
-                        whereSql += ` and ${key} ? `;
-                        whereValue.push(where[key]);
+                    let bb = key.length;
+                    let aa = key.indexOf(fh);
+                    if( key.indexOf(fh) == key.length - fh.length ){
+                        if(typeof where[key] ==='string' && where[key].indexOf('select')>=0 && where[key].indexOf('from')>0){
+                            // 值是sql语句
+                            whereSql += ` and ${key} ( ${where[key]} ) `;
+                            // whereValue.push(where[key]);
+                        } else {
+                            // 值
+                            whereSql += ` and ${key} ? `;
+                            whereValue.push(where[key]);
+                        }
                     }
                 })
             }
@@ -47,10 +56,14 @@ function select(sqlValue) {
     let [whereSql,whereValue] = handleSelectWhere(sqlValue.where);
     let [ select, from, where ] = sqlTemplate.select.split('??');
     let sqlRet = `${select}${selectV}${from}${fromV}${where}${whereSql}`;
+    if(sqlValue.other){
+        sqlRet += sqlValue.other;
+    }
     let sql = mysql.format(sqlRet,whereValue);
-    console.log(sql)
+    console.log(sql);
     return sql;
 }
+
 //
 //
 // common.conn(pool).then(conn=>{

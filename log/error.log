@@ -30,3 +30,16 @@
 2019-12-20T08:50:46.158Z error: insert into sys_role(id,roleCode,roleName,remark,addDate,enabled) values(uuid(),`roleCode` = '4555', `roleName` = '666', `enabled` = true, `deleteFlag` = false, `remark` = '777', `sortNo` = NULL,?,?,?,?)
 2019-12-20T08:51:53.146Z error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?,?,?,?)' at line 1
 2019-12-20T08:51:53.149Z error: insert into sys_role(id,roleCode,roleName,remark,addDate,enabled) values(uuid(),`roleCode` = '4433', `roleName` = '44', `enabled` = true, `deleteFlag` = false, `remark` = '6666', `sortNo` = NULL,?,?,?,?)
+2019-12-25T03:19:47.753Z error: [object Object]
+2019-12-25T03:20:34.886Z error: [object Object]
+2019-12-25T08:09:09.186Z error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'key from cost_type where 1=1  and deleteFlag is false  and code like '11%'  and ' at line 1
+2019-12-25T08:11:36.940Z error: Handshake inactivity timeout
+2019-12-25T08:11:36.952Z error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'key from cost_type where 1=1  and deleteFlag is false  and code like '11%'  and ' at line 1
+2019-12-25T08:12:03.405Z error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'key from cost_type where 1=1  and deleteFlag is false' at line 1
+2019-12-25T08:14:43.396Z error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'key from cost_type where 1=1  and deleteFlag is false' at line 1
+2019-12-25T08:15:47.430Z error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'key from cost_type where 1=1  and deleteFlag is false  and addUserId = 984780006' at line 1
+2019-12-25T08:16:07.178Z error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'key from cost_type where 1=1  and deleteFlag is false' at line 1
+2019-12-25T08:17:16.766Z error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'key from cost_type where 1=1  and deleteFlag is false' at line 1
+2019-12-25T09:16:17.514Z error: Handshake inactivity timeout
+2019-12-25T09:21:37.645Z error: Handshake inactivity timeout
+2019-12-25T09:29:02.090Z error: Handshake inactivity timeout

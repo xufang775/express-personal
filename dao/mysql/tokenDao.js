@@ -28,7 +28,8 @@ function getToken(role,req,res,next) {
                                 { expiresIn: 60 * 60 * 24 * 30 }
                             ),
                             username: obj.username,
-                            role: obj.role
+                            role: obj.role,
+                            userId : obj.id
                         },
                     }
                     ret.message = ret.data.token;
