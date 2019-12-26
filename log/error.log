@@ -1,45 +1,10 @@
-2019-12-17T10:58:53.211Z error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?' at line 1
-2019-12-17T11:00:32.536Z error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?' at line 1
-2019-12-17T11:00:46.543Z error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?' at line 1
-2019-12-17T11:01:25.422Z error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?' at line 1
-2019-12-18T03:19:54.311Z error: ER_EMPTY_QUERY: Query was empty
-2019-12-18T03:21:17.051Z error: ER_EMPTY_QUERY: Query was empty
-2019-12-18T03:23:18.174Z error: ER_EMPTY_QUERY: Query was empty
-2019-12-18T03:23:58.497Z error: ER_EMPTY_QUERY: Query was empty
-2019-12-18T03:23:59.370Z error: ER_EMPTY_QUERY: Query was empty
-2019-12-18T03:25:06.759Z error: connect ETIMEDOUT
-2019-12-18T03:26:39.337Z error: ER_EMPTY_QUERY: Query was empty
-2019-12-18T03:26:40.762Z error: ER_EMPTY_QUERY: Query was empty
-2019-12-18T03:26:41.497Z error: ER_EMPTY_QUERY: Query was empty
-2019-12-18T03:29:43.498Z error: ER_EMPTY_QUERY: Query was empty
-2019-12-18T03:29:47.140Z error: ER_EMPTY_QUERY: Query was empty
-2019-12-18T03:30:40.235Z error: ER_EMPTY_QUERY: Query was empty
-2019-12-18T03:30:50.812Z error: ER_EMPTY_QUERY: Query was empty
-2019-12-18T03:31:59.304Z error: connect ETIMEDOUT
-2019-12-20T01:37:18.532Z error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?' at line 1
-2019-12-20T01:41:40.312Z error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?' at line 1
-2019-12-20T01:43:49.863Z error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?' at line 1
-2019-12-20T02:34:02.364Z error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?' at line 1
-2019-12-20T02:37:55.187Z error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?' at line 1
-2019-12-20T08:34:24.364Z error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?,?,?,?,?)' at line 1
-2019-12-20T08:38:26.197Z error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?,?,?,?)' at line 1
-2019-12-20T08:44:06.522Z error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?,?,?,?)' at line 1
-2019-12-20T08:44:40.471Z error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?,?,?,?)' at line 1
-2019-12-20T08:44:40.473Z error: insert into sys_role(id,roleCode,roleName,remark,addDate,enabled) values(uuid(),`roleCode` = '444', `roleName` = '555', `enabled` = true, `deleteFlag` = false, `remark` = '666', `sortNo` = NULL,?,?,?,?)
-2019-12-20T08:50:46.156Z error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?,?,?,?)' at line 1
-2019-12-20T08:50:46.158Z error: insert into sys_role(id,roleCode,roleName,remark,addDate,enabled) values(uuid(),`roleCode` = '4555', `roleName` = '666', `enabled` = true, `deleteFlag` = false, `remark` = '777', `sortNo` = NULL,?,?,?,?)
-2019-12-20T08:51:53.146Z error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?,?,?,?)' at line 1
-2019-12-20T08:51:53.149Z error: insert into sys_role(id,roleCode,roleName,remark,addDate,enabled) values(uuid(),`roleCode` = '4433', `roleName` = '44', `enabled` = true, `deleteFlag` = false, `remark` = '6666', `sortNo` = NULL,?,?,?,?)
-2019-12-25T03:19:47.753Z error: [object Object]
-2019-12-25T03:20:34.886Z error: [object Object]
-2019-12-25T08:09:09.186Z error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'key from cost_type where 1=1  and deleteFlag is false  and code like '11%'  and ' at line 1
-2019-12-25T08:11:36.940Z error: Handshake inactivity timeout
-2019-12-25T08:11:36.952Z error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'key from cost_type where 1=1  and deleteFlag is false  and code like '11%'  and ' at line 1
-2019-12-25T08:12:03.405Z error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'key from cost_type where 1=1  and deleteFlag is false' at line 1
-2019-12-25T08:14:43.396Z error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'key from cost_type where 1=1  and deleteFlag is false' at line 1
-2019-12-25T08:15:47.430Z error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'key from cost_type where 1=1  and deleteFlag is false  and addUserId = 984780006' at line 1
-2019-12-25T08:16:07.178Z error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'key from cost_type where 1=1  and deleteFlag is false' at line 1
-2019-12-25T08:17:16.766Z error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'key from cost_type where 1=1  and deleteFlag is false' at line 1
-2019-12-25T09:16:17.514Z error: Handshake inactivity timeout
-2019-12-25T09:21:37.645Z error: Handshake inactivity timeout
-2019-12-25T09:29:02.090Z error: Handshake inactivity timeout
+2019-12-26T09:07:24.041Z error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'desc  from cost_type where 1=1  and deleteFlag is false order by  id desc  limit' at line 1
+2019-12-26T09:08:50.372Z error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'desc  >= ( select  id desc  from cost_type where 1=1  and deleteFlag is false or' at line 1
+2019-12-26T09:13:54.625Z error: write ECONNABORTED
+2019-12-26T09:13:54.638Z error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'desc  >= ( select  id desc  from cost_type where 1=1  and deleteFlag is false or' at line 1
+2019-12-26T09:14:00.100Z error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '>= ( select * from cost_type where 1=1  and deleteFlag is false order by  id des' at line 1
+2019-12-26T09:14:03.183Z error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '>= ( select * from cost_type where 1=1  and deleteFlag is false order by  id des' at line 1
+2019-12-26T09:15:32.653Z error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '>= ( select * from cost_type where 1=1  and deleteFlag is false order by  id des' at line 1
+2019-12-26T09:19:24.307Z error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '>= ( select * from cost_type where 1=1  and deleteFlag is false order by  id des' at line 1
+2019-12-26T09:22:38.770Z error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'desc  >= ( select  id desc  from cost_type where 1=1  and deleteFlag is false or' at line 1
+2019-12-26T09:23:57.845Z error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'desc  >= ( select  id desc  from cost_type where 1=1  and deleteFlag is false or' at line 1

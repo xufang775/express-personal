@@ -1,5 +1,6 @@
 var mysql = require('mysql');
 const orderById = 'iid';
+const keyId = 'uuid_short()';
 const sqlTemplate = {
     select:'select ?? from ?? where 1=1 ?? ',
     insert:'insert into ?? ( ?? ) values(??)',
@@ -8,12 +9,12 @@ const sqlTemplate = {
 };
 
 
-function handlePagerSql(body) {
+function handlePagerSql(body,orderbyId = 'iid') {
     let pageIndex = body.pageIndex ? body.pageIndex : 0,
         pageSize = body.pageSize ? body.pageSize : 10,
         pageStart = pageIndex * pageSize;
-    let sqlOrderby1=mysql.format('order by iid limit ?,1',pageStart);
-    let sqlOrderby2=mysql.format('order by iid limit ?',pageSize);
+    let sqlOrderby1=mysql.format('order by '+ orderbyId +' limit ?,1',pageStart);
+    let sqlOrderby2=mysql.format('order by '+ orderbyId +' limit ?',pageSize);
     return [sqlOrderby1,sqlOrderby2]
 }
 function handleSelectWhere(where) {
@@ -83,24 +84,28 @@ function handleInsert() {
     return sql;
 }
 
-function pageSql(req,tableName,where) {
+function pageSql({body},tableName,where,orderbySql = 'iid|desc|iid desc') {
     // queryPage: `select * from cost_type where name like '%?%' and iid >=(select iid from cost_type order by iid limit ?,1) order by iid limit ?;`,
     // queryAllCount:`select count(*) as count from cost_type where name like '%?%' and deleteFlag = 0`
-    let body = req.body;
-    let [subOrderBy,baseOrderBy] = handlePagerSql(body);
+    let [orderById,orderByAsc,orderByOther] = orderbySql.split('|');
+    // 处理排序运算符
+    let orderByYunShuan = orderByAsc == 'asc' ? '>=' : '<=';
+    let [subOrderBy,baseOrderBy] = orderByOther ? handlePagerSql(body,orderByOther) : handlePagerSql(body);
     let subSql = handleSelect({select:orderById, from:tableName, where:where, other:subOrderBy});
     let baseSql = handleSelect({
         from:tableName,
         where:{
             ...where,
-            [`${orderById} >=`]:subSql
+            [`${orderById} ${orderByYunShuan}`]:subSql
         },
         other:baseOrderBy
     });
     let sqlCount = handleSelect({select:'count(*) as count', from:tableName, where:where});
+    console.log(baseSql);
+    console.log(sqlCount)
     return [baseSql,sqlCount];
 }
-function insertSql({body},tableName) {
+function insertSql( body ,tableName, isuuid) {
     // insert into ?? ( ?? ) values(??)
     let sqlTableName = tableName;
     let sqlFields = '';
@@ -113,11 +118,16 @@ function insertSql({body},tableName) {
             arrValues.push(body[field])
         }
     })
-    // 去掉第一个“，”
-    sqlFields = sqlFields.substring(1);
-    sqlValues = sqlValues.substring(1);
+    if(isuuid){
+        // 自生成id
+        sqlFields = 'id' + sqlFields;
+        sqlValues = `${keyId}` + sqlValues;
+    } else {
+        // 不需要生成，去掉第一个“，”
+        sqlFields = sqlFields.substring(1);
+        sqlValues = sqlValues.substring(1);
+    }
     sqlValues = mysql.format(sqlValues,arrValues);
-
     let insertArr = sqlTemplate.insert.split('??');
     let sqlRet = `${insertArr[0]}${sqlTableName}${insertArr[1]}${sqlFields}${insertArr[2]}${sqlValues}${insertArr[3]}`;
     return sqlRet;
@@ -125,6 +135,7 @@ function insertSql({body},tableName) {
 
 
 module.exports = {
+    keyId: keyId,
     handleSelect: handleSelect,
     handlePagerSql: handlePagerSql,
     pageSql:pageSql,
