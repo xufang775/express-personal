@@ -8,3 +8,12 @@
 2019-12-26T09:19:24.307Z error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '>= ( select * from cost_type where 1=1  and deleteFlag is false order by  id des' at line 1
 2019-12-26T09:22:38.770Z error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'desc  >= ( select  id desc  from cost_type where 1=1  and deleteFlag is false or' at line 1
 2019-12-26T09:23:57.845Z error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'desc  >= ( select  id desc  from cost_type where 1=1  and deleteFlag is false or' at line 1
+2019-12-27T09:00:43.503Z error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'and deleteFlag is false and id = 98499804472021540' at line 1
+2019-12-27T09:02:07.166Z error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'and deleteFlag is false and id = 98499804472021540' at line 1
+2019-12-27T09:04:25.943Z error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'and deleteFlag is false , id = 98499804472021550' at line 1
+2019-12-27T09:05:30.928Z error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'and deleteFlag is false , id = 98499804472021540' at line 1
+2019-12-27T09:28:44.182Z error: write ECONNABORTED
+2019-12-27T09:29:14.678Z error: read ECONNRESET
+2019-12-27T11:01:35.487Z error: ER_WRONG_VALUE_COUNT_ON_ROW: Column count doesn't match value count at row 1
+2019-12-27T11:01:43.672Z error: ER_WRONG_VALUE_COUNT_ON_ROW: Column count doesn't match value count at row 1
+2019-12-27T11:07:03.376Z error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''2019-12-27 19:06:56')' at line 1

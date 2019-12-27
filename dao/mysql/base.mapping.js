@@ -8,7 +8,6 @@ const sqlTemplate = {
     delete:'delete from ?? where ??'
 };
 
-
 function handlePagerSql(body,orderbyId = 'iid') {
     let pageIndex = body.pageIndex ? body.pageIndex : 0,
         pageSize = body.pageSize ? body.pageSize : 10,
@@ -93,6 +92,7 @@ function pageSql({body},tableName,where,orderbySql = 'iid|desc|iid desc') {
     let [subOrderBy,baseOrderBy] = orderByOther ? handlePagerSql(body,orderByOther) : handlePagerSql(body);
     let subSql = handleSelect({select:orderById, from:tableName, where:where, other:subOrderBy});
     let baseSql = handleSelect({
+        // select: 'id,code,name',
         from:tableName,
         where:{
             ...where,
@@ -132,6 +132,60 @@ function insertSql( body ,tableName, isuuid) {
     let sqlRet = `${insertArr[0]}${sqlTableName}${insertArr[1]}${sqlFields}${insertArr[2]}${sqlValues}${insertArr[3]}`;
     return sqlRet;
 }
+function updateSql( setBody, whereBody ,tableName) {
+    // update ?? set ?? where ??
+    let sqlTableName = tableName;
+    let sqlSetFields = '';
+    let arrSetFields = [];
+
+    let sqlSetWhere = '';
+    let arrSetWhere = [];
+
+    Object.keys(setBody).forEach(field=>{
+        if(setBody[field] || setBody[field] == false ){
+            sqlSetFields += `, ${field} = ? `;
+            arrSetFields.push(setBody[field])
+        }
+    })
+
+    Object.keys(whereBody).forEach(field=>{
+        if(whereBody[field] || whereBody[field] == false ){
+            sqlSetWhere += ` and ${field} ? `;
+            arrSetWhere.push(whereBody[field])
+        }
+    })
+    // 不需要生成，去掉第一个“，”
+    sqlSetFields = sqlSetFields.substring(1);
+    sqlSetWhere = sqlSetWhere.replace('and','');
+
+    sqlSetFields = mysql.format(sqlSetFields,arrSetFields);
+    sqlSetWhere = mysql.format(sqlSetWhere,arrSetWhere);
+
+    let insertArr = sqlTemplate.update.split('??');
+    let sqlRet = `${insertArr[0]}${sqlTableName}${insertArr[1]}${sqlSetFields}${insertArr[2]}${sqlSetWhere}`;
+    return sqlRet;
+}
+function deleteSql( body ,tableName) {
+    // delete from ?? where ??
+    let sqlTableName = tableName;
+    let sqlWheres = '';
+    let arrValues = [];
+    let sqlWhereAll = '';
+
+    Object.keys(body).forEach(field=>{
+        if(body[field] || body[field] == false ){
+            sqlWheres += ` and ${field} ?`;
+            arrValues.push(body[field])
+        }
+    });
+    // 不需要生成，去掉第一个“，”
+    sqlWheres = sqlWheres.substring(1).replace('and','');
+    sqlWhereAll = mysql.format(sqlWheres,arrValues);
+    let insertArr = sqlTemplate.delete.split('??');
+    let sqlRet = `${insertArr[0]}${sqlTableName}${insertArr[1]}${sqlWhereAll}`;
+    console.log(sqlRet)
+    return sqlRet;
+}
 
 
 module.exports = {
@@ -139,7 +193,9 @@ module.exports = {
     handleSelect: handleSelect,
     handlePagerSql: handlePagerSql,
     pageSql:pageSql,
-    insertSql: insertSql
+    insertSql: insertSql,
+    updateSql: updateSql,
+    deleteSql: deleteSql
 }
 
 

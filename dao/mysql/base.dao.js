@@ -51,6 +51,28 @@ async function insert(res,sql) {
     common.jsonWrite(res, ret);
     conn.release();
 }
+async function update(res,sql) {
+    let conn =await common.conn(pool);
+    let result =await common.exec(conn,sql);
+    let ret = {
+        code: HTTP_CODE.c20000,
+        data: result.affectedRows[0],
+        message: result.affectedRows>0 ? '操作成功' : '操作失败'
+    };
+    common.jsonWrite(res, ret);
+    conn.release();
+}
+async function deleteS(res,sql) {
+    let conn =await common.conn(pool);
+    let result =await common.exec(conn,sql);
+    let ret = {
+        code: HTTP_CODE.c20000,
+        data: result.affectedRows[0],
+        message: result.affectedRows > 0 ? '操作成功' : '操作失败'
+    };
+    common.jsonWrite(res, ret);
+    conn.release();
+}
 async function select(res,sql) {
     let conn =await common.conn(pool);
     let result =await common.exec(conn,sql);
@@ -67,5 +89,7 @@ module.exports = {
     exec:exec,
     page: page,
     insert: insert,
+    update: update,
+    delete: deleteS,
     select: select
 };

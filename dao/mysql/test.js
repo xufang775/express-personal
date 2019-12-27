@@ -39,7 +39,7 @@ common.conn(pool).then(conn=>{
     // // 混合查询语句
     // sqlHunheSQL(conn);
 
-    let sql = 'select 1; select 2;';
+    let sql = 'SELECT * FROM cost_type;';
     conn.query(sql,(err,results)=>{
         if (err) throw err;
         console.log(results)
