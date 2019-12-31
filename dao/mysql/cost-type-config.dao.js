@@ -1,10 +1,12 @@
 // var mysql = require('mysql');
 var bDao = require('./base.dao');
 var bMapping = require('./base.mapping');
+var costTypeDao  = require('./cost-type.dao');
+var costTypeMapping = costTypeDao.mapping;
 const { HTTP_CODE } = require('../../common/constant');
 var currentTime = require('../../common/getCurrentTime');
 var common = require('./common');
-var tableName = 'cost_type';
+var tableName = 'cost_type_config';
 var orderByConfig = 'id|asc|id asc';   // 排序字段| 排序sql字段
 // var orderByConfig = 'id|desc';   // 排序字段| 排序sql字段
 
@@ -141,21 +143,17 @@ const mapping = {
             where: handleWhere(req.body)
         })
     },
-    //
-    queryByCodeIn(codeArr=[]){
+    queryById(req,res) {
+        let params = {id: '467553c4-3fc8-40f4-9d3a-72cfb5c049af'};
         let sql = bMapping.handleSelect({
-            // select:'code value,name label,field',
-            from:tableName,
-            where:{
-                'code in': codeArr
-            }
-        })
+            from: tableName,
+            where: handleWhere(params)
+        });
         return sql;
     }
 };
 
-module.exports = {
-    mapping: mapping,
+const dao = {
     page: async function(req,res,next) {
         let [sql,sqlCount] = mapping.page(req,res);
         await bDao.page(res,sql,sqlCount);
@@ -189,5 +187,32 @@ module.exports = {
             data:resultTree
         }
         common.jsonWrite(res,ret);
+    },
+    async queryById(req,res){
+        let ret ;
+        // 获取类型配置
+        let sqlCostTypeConfig = mapping.queryById();
+        let resultCTC =await bDao.exec(sqlCostTypeConfig);
+        if(resultCTC.length>0){
+            let ctc = resultCTC[0]
+            let codeArr = ctc.details.split(',');
+            // 获取消费类型
+            let sqlCostType = costTypeMapping.queryByCodeIn(codeArr);
+            let resultCT = await bDao.exec(sqlCostType);
+            if(resultCT.length>0){
+                ret = {
+                    code: HTTP_CODE.c20000,
+                    data: resultCT
+                }
+            }
+            // console.log(sqlCostTypeConfig)
+            // console.log(sqlCostType)
+        }
+        common.jsonWrite(res,ret);
+
     }
 };
+// dao.queryById();
+
+module.exports = dao;
+

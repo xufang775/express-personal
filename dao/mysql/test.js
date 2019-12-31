@@ -2,6 +2,7 @@ var mysql = require('mysql');
 var config = require('../../config/db');
 var pool = mysql.createPool(config.mysql);
 var common = require('./common');
+var bMapping = require('./base.mapping');
 
 // sql格式化
 function sqlFormat() {
@@ -39,11 +40,18 @@ common.conn(pool).then(conn=>{
     // // 混合查询语句
     // sqlHunheSQL(conn);
 
-    let sql = 'SELECT * FROM cost_type;';
-    conn.query(sql,(err,results)=>{
-        if (err) throw err;
-        console.log(results)
+    // let sql = 'SELECT * FROM cost_type;';
+    // conn.query(sql,(err,results)=>{
+    //     if (err) throw err;
+    //     console.log(results)
+    // })
+    let tableName = 'cost_type_config';
+    let params = { 'id =':'467553c4-3fc8-40f4-9d3a-72cfb5c049af' };
+    let sql = bMapping.handleSelect({
+        tableName:tableName,
+        where:handleWhere(params)
     })
+    console.log(sql)
 
     // sql2(conn);
 

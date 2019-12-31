@@ -7,9 +7,33 @@ const sqlTemplate = {
     update:'update ?? set ?? where ??',
     delete:'delete from ?? where ??'
 };
+function handlePagerOrderBy(tableName,body,where,config = 'id|desc') {
+    // orderById = 排序的主键id, orderByAsc = 主键排序，orderByOther = 其他
+    let [orderById,orderByAsc,orderByOther] = config.split('|');
 
-function handlePagerSql(body,orderbyId = 'iid') {
+    // 处理排序运算符
+    let orderByYunShuan = orderByAsc == 'asc' ? '>=' : '<=';
+    if(orderByAsc) orderByAsc = 'desc';
+
+    // 设置配置分页信息
     let pageIndex = body.pageIndex ? body.pageIndex : 0,
+        pageSize = body.pageSize ? body.pageSize : 10,
+        pageStart = pageIndex * pageSize;
+
+    let sqlOrderByField = orderByOther ? `${orderById} ${orderByAsc}` : `${orderById} ${orderByAsc},${orderByOther}`;
+    let sqlOrderby1=mysql.format('order by '+ orderById +' limit ?,1',pageStart);
+    let sqlOrderby2=mysql.format('order by '+ orderById +' limit ?',pageSize);
+
+    let subSql = handleSelect({select:orderById, from:tableName, where:where, other:sqlOrderby1});
+    let retSql = ` ${orderById} ${orderByYunShuan} (${subSql}) ${sqlOrderby2}`;
+
+    // let [subOrderBy,baseOrderBy] = orderByOther ? handlePagerSql(body,orderByOther) : handlePagerSql(body);
+    // return {subOrderBy,baseOrderBy,orderByYunShuan,orderById};
+
+    return retSql;
+}
+function handlePagerSql(body,orderbyId = 'iid') {
+    let pageIndex = body.pageIndex ? body.pageIndex-1 : 0,
         pageSize = body.pageSize ? body.pageSize : 10,
         pageStart = pageIndex * pageSize;
     let sqlOrderby1=mysql.format('order by '+ orderbyId +' limit ?,1',pageStart);
@@ -82,17 +106,16 @@ function handleInsert() {
     // console.log(sql);
     return sql;
 }
-
-function pageSql({body},tableName,where,orderbySql = 'iid|desc|iid desc') {
+function pageSql({tableName,body,where,selectSql='*',orderByConfig = 'iid|desc|iid desc'}) {
     // queryPage: `select * from cost_type where name like '%?%' and iid >=(select iid from cost_type order by iid limit ?,1) order by iid limit ?;`,
     // queryAllCount:`select count(*) as count from cost_type where name like '%?%' and deleteFlag = 0`
-    let [orderById,orderByAsc,orderByOther] = orderbySql.split('|');
+    let [orderById,orderByAsc,orderByOther] = orderByConfig.split('|');
     // 处理排序运算符
     let orderByYunShuan = orderByAsc == 'asc' ? '>=' : '<=';
     let [subOrderBy,baseOrderBy] = orderByOther ? handlePagerSql(body,orderByOther) : handlePagerSql(body);
     let subSql = handleSelect({select:orderById, from:tableName, where:where, other:subOrderBy});
     let baseSql = handleSelect({
-        // select: 'id,code,name',
+        select: selectSql,
         from:tableName,
         where:{
             ...where,
@@ -192,6 +215,7 @@ module.exports = {
     keyId: keyId,
     handleSelect: handleSelect,
     handlePagerSql: handlePagerSql,
+    handlePagerOrderBy: handlePagerOrderBy,
     pageSql:pageSql,
     insertSql: insertSql,
     updateSql: updateSql,

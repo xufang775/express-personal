@@ -8,6 +8,7 @@ const { HTTP_CODE } = require('../../common/constant');
 var pool = mysql.createPool(config.mysql);
 
 async function exec(sql) {
+    console.log(sql)
     let conn =await common.conn(pool);
     let result =await common.exec(conn,sql);
     conn.release();
